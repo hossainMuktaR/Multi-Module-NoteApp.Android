@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.noteapp_architecture_sample"
+    namespace = "com.example.multimodulenoteapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.noteapp_cleanarch_mvi_mvvm"
+        applicationId = "com.example.multimodulenoteapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
