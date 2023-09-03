@@ -18,6 +18,9 @@ room-ktx = "2.6.0-alpha02"
 kotlinx-coroutines-core = "1.7.1"
 kotlin-ksp = "1.9.0-1.0.12"
 hilt-lifecycle-viewmodel = "1.0.0-alpha03"
+org-jetbrains-kotlin-jvm = "1.9.0"
+appcompat = "1.6.1"
+material = "1.8.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -47,6 +50,10 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-kt
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-ktx" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-core" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+ui-android = { group = "androidx.compose.ui", name = "ui-android", version = "1.5.0" }
+ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.0" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
@@ -54,3 +61,5 @@ org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.re
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "dagger-hilt-android" }
 kotlin-kapt = { id = "kotlin-kapt" }
 google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
+com-android-library = { id = "com.android.library", version.ref = "agp" }

@@ -1,6 +1,6 @@
-
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
 
     alias(libs.plugins.com.google.dagger.hilt.android)
@@ -8,26 +8,23 @@ plugins {
 }
 
 android {
-    namespace = "com.example.multimodulenoteapp"
+    namespace = "com.example.feature.note.presentation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.multimodulenoteapp"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -46,6 +43,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.core.ktx)
     implementation(platform(libs.kotlin.bom))
     implementation(libs.lifecycle.runtime.ktx)
@@ -58,25 +56,18 @@ dependencies {
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.atest.ext.junit)
     androidTestImplementation(libs.atestespresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.test.ui.junit4)
-    debugImplementation(libs.debug.ui.tooling)
-    debugImplementation(libs.debug.ui.tooling)
 
-//    Compose dependencies
-    implementation(libs.lifecycle.viewmodel.compose)
-    implementation(libs.navigation.compose)
-    implementation(libs.hilt.navigation.compose)
+    implementation(project(":core:redux"))
+    implementation(project(":feature:note:data"))
+    implementation(project(":feature:note:domain"))
+    implementation(project(":feature:note:utils"))
 
-    // Dagger-Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     kapt(libs.hilt.android.compiler)
 
-    implementation(project(":feature:note:presentation"))
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.navigation.compose)
+    implementation(libs.material.icons.extended)
+    implementation(libs.hilt.navigation.compose)
 }
