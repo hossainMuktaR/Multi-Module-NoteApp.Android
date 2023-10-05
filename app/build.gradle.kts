@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
 
     alias(libs.plugins.com.google.dagger.hilt.android)
-    id(libs.plugins.kotlin.kapt.get().pluginId)
+    alias(libs.plugins.google.devtools.ksp)
 }
 
 android {
@@ -70,13 +70,8 @@ dependencies {
 
     // Dagger-Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
 
     implementation(project(":feature:note:presentation"))
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }
